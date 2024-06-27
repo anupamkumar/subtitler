@@ -1,4 +1,5 @@
 # Subtitler
+
 Use the power of Whisper to transcribe any video clip and generate it's subtitles (srt) file. Also, use cutting-edge AI-power translation-services to translate the generated subtitles to any language you want.
 
 ## What ?
@@ -7,7 +8,7 @@ Subtitler is a utility that can be used as GUI or CLI depending on your preferen
 It uses open-AI's Whisper model to generate a transcript of a video. It additionally can also translate the generated transcript to other languages.
 All the transcriptions and translations are stored as `.srt` files.
 
-The most common usecase for using this utility is to auto-generate subtitles for your TVShows, Movies, Home-Videos or auto-generate lyrics for your Music. And not only just auto-generate subtitles and lyrics, but auto-convert them to the language of your preference. 
+The most common usecase for using this utility is to auto-generate subtitles for your TVShows, Movies, Home-Videos or auto-generate lyrics for your Music. And not only just auto-generate subtitles and lyrics, but auto-convert them to the language of your preference.
 
 This is most useful when used in conjunction with a Media-Library/Server like Kodi, Emby, Plex or Jellyfin wherein you may have a private library of multimedia and want to enrich it by generating subtitles.
 
@@ -20,12 +21,15 @@ Simply put, when I looked at whisper's [show-and-tell](https://github.com/ggerga
 ## How ?
 
 ### How do I install this utility ?
+
 The easiest way is
+
 ```
 pip install subtitler_util
 ```
 
 You could also download the zip from github and install the following dependencies
+
 ```
     "ffmpeg-python",
     "openai-whisper",
@@ -35,28 +39,37 @@ You could also download the zip from github and install the following dependenci
 
 ### How do I run this utility ?
 
-##### Method 1: 
+##### Method 1
+
 If you used `pip` to install, then you should have `subtitler` command available in the terminal of your choice.
 
 Simply, type
+
 ```
 subtitler
 ```
+
 to start the GUI
 or type
+
 ```
 subtitler cli --help
 ```
+
 to run CLI version of the utility.
 
-##### Method 2:
-If you downloaded the zip or clone the repo. You can run the utility after installing the dependencies. 
+##### Method 2
+
+If you downloaded the zip or clone the repo. You can run the utility after installing the dependencies.
 
 To run the GUI, type the following in the terminal
+
 ```
 python subtitler.py
 ```
+
 To run the CLI, type the following in the terminal
+
 ```
 python subtitler.py cli
 ```
@@ -70,7 +83,7 @@ The GUI is useful for anyone who does not want to worry about command-line argum
 The GUI looks like this
 ![gui](doc/img/gui1.png)
 
-First, you'll need to give the utility, either bunch of files (each file is seperated by a `:` ) 
+First, you'll need to give the utility, either bunch of files (each file is seperated by a `:` )
 | screenshot | screenshot |
 |------ | ------ |
 | ![gui](doc/img/gui2a.png) | ![gui](doc/img/gui2b.png) |
@@ -80,11 +93,10 @@ or You can give the utility a directory.
 |------ | ------ |
 | ![gui](doc/img/gui3a.png) | ![gui](doc/img/gui3b.png) |
 
-Next, you'll need to tell the utility what language your media is in. This will tell whisper what language to use to transcribe the media in. 
+Next, you'll need to tell the utility what language your media is in. This will tell whisper what language to use to transcribe the media in.
 | screenshot | screenshot |
 |------ | ------ |
 | ![gui](doc/img/gui4a.png) | ![gui](doc/img/gui4b.png) |
-
 
 The language selection has auto-complete feature to make life easier...
 
@@ -100,9 +112,9 @@ I was able to verify the following services work ... Not all services require AP
 
 The table below gives more details.
 
-| translation-service | description | requires api-key | 
+| translation-service | description | requires api-key |
 | ----- | ----- | ----- |
-| google | google translate's API | no | 
+| google | google translate's API | no |
 | deepl | [deepl's translation API](https://www.deepl.com/en/translator) | yes |
 | yandex | [yandex translate API](https://yandex.cloud/en/docs/translate) | yes |
 | libre-translate | [libre translate's API](https://libretranslate.com/) | yes |
@@ -116,15 +128,15 @@ The table below gives more details.
 > Explaining how to create API-keys for these translation services is beyond the scope of this document.
 
 If you decide to translate using a service that uses API-key, enter the API-key in the API-key text box
-![gui](doc/img/gui6.png) 
+![gui](doc/img/gui6.png)
 
 Finally, click the `start` button.
 
 That should start the transcription and translation process.
-![gui](doc/img/gui7.png) 
+![gui](doc/img/gui7.png)
 
 There is a lot of information thrown at you ... let's break it down.
-![gui](doc/img/gui7_breakdown.png) 
+![gui](doc/img/gui7_breakdown.png)
 
 1. Shows the overall status of the job
 2. Shows the current `run configuration` i.e the settings you chose, which includes the files/directories, transcription and translation config etc...
@@ -143,6 +155,7 @@ Once all the transcriptions and translations are complete, you get a pop-up noti
 * clicking on `close` exits the utility
 
 ### Using the CLI
+
 ```
 usage: Subtitler [-h] (--video_files VIDEO_FILES | --video_dir VIDEO_DIR) --video_language
                  {af,am,ar...}
@@ -181,16 +194,19 @@ Translation Configuration:
 ```
 
 Basic usage is to transcribe a dir or a bunch of files. It can be done as shown below.
+
 ```
 python subtitler.py cli --video_file "~/test_clips/test.mp4" --video_language=english
 ```
 
 You can pass a bunch of `--translation_languages` seperated by space as follows
+
 ```
 python subtitler.py cli --video_file "~/test_clips/test.mp4" --video_language=english --translation_languages urdu french german
 ```
 
 The job execution log is identical to the GUI log. Here's a sample exerpt ...
+
 ```
 python subtitler.py cli --video_file "/Users/anupamkumar/coding/subtitler_util/test_clips/test.mp4" --video_language=english --translation_languages urdu french german
 Run Configuration: Namespace(mode='cli', video_files=['/Users/anupamkumar/coding/subtitler_util/test_clips/test.mp4'], video_dir=None, video_language='english', force_language_autodetect=False, translation_languages=['urdu', 'french', 'german'], translation_service='google', translation_service_api_key=None)
@@ -220,19 +236,21 @@ clean up done.
 ```
 
 ## FAQ
+
 #### Is is fast ?
 
-This is as fast whisper library. The whisper library should preferably by run on GPU or NPU for accelerated performance, however it can run, albiet slowly on CPU as well. 
+This is as fast whisper library. The whisper library should preferably by run on GPU or NPU for accelerated performance, however it can run, albiet slowly on CPU as well.
 I am looking into enhancing it's performance by using whisper.cc instead of python implementation of whisper.
 
 The translation-services are fairly speedy. Your milage may wary depending on which service you use and your internet speed.
 
 #### What translation-services are available ?
+
 The following services are tested and available to use.
 
-| translation-service | description | requires api-key | 
+| translation-service | description | requires api-key |
 | ----- | ----- | ----- |
-| google | google translate's API | no | 
+| google | google translate's API | no |
 | deepl | [deepl's translation API](https://www.deepl.com/en/translator) | yes |
 | yandex | [yandex translate API](https://yandex.cloud/en/docs/translate) | yes |
 | libre-translate | [libre translate's API](https://libretranslate.com/) | yes |
@@ -243,19 +261,30 @@ The following services are tested and available to use.
 
 It adhere's to the external-file-style guide prescribed by [jellyfin](https://jellyfin.org/docs/general/server/media/external-files/).
 
-The orignally transcribed subtitle file will be saved as 
+The orignally transcribed subtitle file will be saved as
 `<media-file-name>.default.<media-file's-ISO-693-language-code>.srt`
 
-All subsequent translated subtitle files will be saved as 
+All subsequent translated subtitle files will be saved as
 `<media-file-name>.<media-file's-ISO-693-language-code>.srt`
 
 > [!NOTE]
-> The `.default` sub-extention is applied to the transcribed file. `.default` will be absent from all translated subtitle files.
+> The `.default` sub-extention is applied to the transcribed file indicating that the original media's default audio option. `.default` will be absent from all translated subtitle files.
 
 #### Your examples all have warnings ... what's up with that ?
-I am making this documentation on Apple M1 silicon. It does not have GPU acceleration and whisper's transcription is happening on the M1 chip. That's why you see the warning. 
+
+I am making this documentation on Apple M1 silicon. It does not have GPU acceleration and whisper's transcription is happening on the M1 chip. That's why you see the warning.
 
 The utility is smart enough to first try to perform the ML-computation on GPU-device. If no GPU is found, it falls back to CPU, which is pretty slow TBH... :|
 
 #### Will it run on my OS ?
+
 Both the GUI and CLI should be able to run on any mainstream OS (Windows/Mac/GNU-Linux) without any problems.
+
+## Standing on the shoulder of Giants : Credit where credit is due
+
+Writing this tiny... tiny... tiny utility would not be possible if not for these projects. <3
+
+* [openai-whisper](https://github.com/openai/whisper) - The 'heart' the utility. Does the AI powered transcription. Where would this project be without it 😍
+* [deep-translator](https://github.com/nidhaloff/deep-translator) - The library I use to do translations for transcribed subtitles. Super nice library. Provides a very nice, standardized interface for all translators services. 😄
+* [Gooey](https://github.com/chriskiehl/Gooey) - For the GUI piece. My mind was blown when I first came across this! 🤯
+* [ffmpeg-python](https://github.com/kkroening/ffmpeg-python) - For pulling media extraction and probing etc. Another amazingly well-made library for all your complex ffmpeg needs 🤩
