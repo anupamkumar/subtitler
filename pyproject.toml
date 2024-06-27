@@ -1,0 +1,47 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name="subtitler_util"
+version="1.0"
+authors = [
+    {name="Anupam", email="anupam@anupamkumar.me"}
+]
+description = "A utility that uses Whisper to transcribe videos and various translation APIs to translate the transcribed text and save them as SRT (subtitle) files"
+readme = "README.md"
+requires-python = ">=3.10"
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Environment :: Console",
+    "Environment :: GPU",
+    "Environment :: GPU :: NVIDIA CUDA",
+    "Environment :: MacOS X",
+    "Environment :: Win32 (MS Windows)",
+    "Environment :: X11 Applications :: GTK",
+    "Intended Audience :: Other Audience",
+    "Intended Audience :: Information Technology",
+    "Intended Audience :: System Administrators",
+    "Intended Audience :: End Users/Desktop",
+    "License :: Freely Distributable",
+    "Natural Language :: English",
+    "Programming Language :: Python :: 3 :: Only",
+    "Operating System :: OS Independent",
+    "Topic :: Multimedia :: Video",
+    "Topic :: Multimedia",
+    "Topic :: Utilities"
+]
+dependencies = [
+    "ffmpeg-python",
+    "openai-whisper",
+    "Gooey",
+    "deep-translator"
+]
+
+[project.scripts]
+subtitler = "subtitler_util.subtitler:main"
+
+[project.urls]
+Homepage = "https://anupamkumar.me"
+
+
