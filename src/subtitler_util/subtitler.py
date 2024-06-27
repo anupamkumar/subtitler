@@ -196,39 +196,38 @@ def find_vid_files_in_dir(target_dir):
     return files_list
 
 def subtitle(vid_file_map: dict, audio_files: list, video_language: str, translation_languages: list, translation_service: str="google", translation_service_api_key: str = None, mode: str=None):
-
-    def print_progress():
+    
+    def print_and_update_progress(update_progress=False):
+        nonlocal current_step
         if mode is None:
             print(f"progress: {current_step}/{total_steps}")
-    
+        if update_progress:
+            current_step += 1
+
     total_steps = 2
     current_step = 1
-    print_progress()
+    print_and_update_progress()
     model = init_model()
-    current_step +=1
+    print_and_update_progress(update_progress=True)
     print("Done.")
     total_steps += (len(audio_files)*2) + (len(audio_files)*len(translation_languages)*2)
-    print_progress()
+    print_and_update_progress()
     for  audio_file in audio_files:
-        print(f"transcribing video: {vid_file_map[audio_file]} in {video_language}")
+        print(f"Transcribing video: {vid_file_map[audio_file]} in {video_language}")
         r=transcribe_audio(model, audio_file, video_language)
-        current_step += 1
         print("Done.\nSaving...")
-        print_progress()
+        print_and_update_progress(update_progress=True)
         saved_file = save_result_as_srt(r,video_language,vid_file_map[audio_file],True)
-        current_step += 1
         print(f"Done. Saved transcribed result as srt file: {saved_file}")
-        print_progress()
+        print_and_update_progress(update_progress=True)
         for translation_lang in translation_languages:
-            print(f"translating subtitles to another language: {translation_lang}")
+            print(f"\tTranslating subtitles to another language: {translation_lang}")
             r2=translate_transcribed_result(r,video_language,translation_lang,translator=translation_service, api_key=translation_service_api_key)
-            current_step += 1
-            print(f"Done.\nSaving...")
-            print_progress()
+            print(f"\tDone.\n\tSaving...")
+            print_and_update_progress(update_progress=True)
             saved_file = save_result_as_srt(r2,translation_lang,vid_file_map[audio_file])
-            current_step += 1
-            print(f"Done. Saved translated result as srt file: {saved_file}")
-            print_progress()
+            print(f"\tDone. Saved translated result as srt file: {saved_file}")
+            print_and_update_progress(update_progress=True)
         
 
 def process_args(args):
