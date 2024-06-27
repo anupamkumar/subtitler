@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name="subtitler_util"
-version="1.0"
+version="1.0.1"
 authors = [
     {name="Anupam", email="anupam@anupamkumar.me"}
 ]
@@ -43,5 +43,6 @@ subtitler = "subtitler_util.subtitler:main"
 
 [project.urls]
 Homepage = "https://anupamkumar.me"
-
+GitHub = "https://github.com/anupamkumar/subtitler"
+Issues = "https://github.com/anupamkumar/subtitler/issues"
 

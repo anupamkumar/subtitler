@@ -15,7 +15,7 @@ This is a decent alternative to open-subtitles where, subtitles are crowdsourced
 
 ## Why ?
 
-Simply put, when I looked at whisper's [show-and-tell]() section on github, I did not find a promising utility that could robustly do what I wanted, i.e generate subtitles for all my media files in my jellyfin library in multiple languages.
+Simply put, when I looked at whisper's [show-and-tell](https://github.com/ggerganov/whisper.cpp/discussions/categories/show-and-tell) section on github, I did not find a promising utility that could robustly do what I wanted, i.e generate subtitles for all my media files in my jellyfin library in multiple languages.
 
 ## How ?
 
