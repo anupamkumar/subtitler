@@ -241,7 +241,7 @@ The following services are tested and available to use.
 
 #### What's with the subtitle file formatting ?
 
-It adhere's to the external-file-style guide prescribed by jellyfin.
+It adhere's to the external-file-style guide prescribed by [jellyfin](https://jellyfin.org/docs/general/server/media/external-files/).
 
 The orignally transcribed subtitle file will be saved as 
 `<media-file-name>.default.<media-file's-ISO-693-language-code>.srt`
