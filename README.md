@@ -256,3 +256,6 @@ All subsequent translated subtitle files will be saved as
 I am making this documentation on Apple M1 silicon. It does not have GPU acceleration and whisper's transcription is happening on the M1 chip. That's why you see the warning. 
 
 The utility is smart enough to first try to perform the ML-computation on GPU-device. If no GPU is found, it falls back to CPU, which is pretty slow TBH... :|
+
+#### Will it run on my OS ?
+Both the GUI and CLI should be able to run on any mainstream OS (Windows/Mac/GNU-Linux) without any problems.

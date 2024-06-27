@@ -1,5 +1,3 @@
-TEMP_DIR="/tmp/subtitler"
-
 import ffmpeg
 import torch
 import os
