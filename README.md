@@ -282,7 +282,7 @@ Both the GUI and CLI should be able to run on any mainstream OS (Windows/Mac/GNU
 
 ## Standing on the shoulder of Giants : Credit where credit is due
 
-Writing this tiny... tiny... tiny utility would not be possible if not for these projects. <3
+Writing this tiny... tiny... tiny utility would not be possible if not for these projects. 💗
 
 * [openai-whisper](https://github.com/openai/whisper) - The 'heart' the utility. Does the AI powered transcription. Where would this project be without it 😍
 * [deep-translator](https://github.com/nidhaloff/deep-translator) - The library I use to do translations for transcribed subtitles. Super nice library. Provides a very nice, standardized interface for all translators services. 😄
