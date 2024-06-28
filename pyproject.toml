@@ -40,6 +40,7 @@ dynamic = ["version"]
 
 [project.scripts]
 subtitler = "subtitler_util.subtitler:main"
+subtitler.exe = "subtitler_util.subtitler:main"
 
 [project.urls]
 Homepage = "https://anupamkumar.me"
