@@ -42,7 +42,7 @@ dynamic = ["version"]
 subtitler = "subtitler_util.subtitler:main"
 
 [project.gui-scripts]
-subtitler-gui = "subtitler_util.subtitler:gui"
+subtitler-gui.exe = "subtitler_util.subtitler:gui"
 
 [project.urls]
 Homepage = "https://anupamkumar.me"
