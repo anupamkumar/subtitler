@@ -247,12 +247,16 @@ The following services are tested and available to use.
 
 | translation-service | description | requires api-key |
 | ----- | ----- | ----- |
-| google | google translate's API | no |
+| google | [google translate's API](https://cloud.google.com/translate/docs/reference/rest) | no |
 | deepl | [deepl's translation API](https://www.deepl.com/en/translator) | yes |
 | yandex | [yandex translate API](https://yandex.cloud/en/docs/translate) | yes |
 | libre-translate | [libre translate's API](https://libretranslate.com/) | yes |
 | microsoft | [microsoft azure conginitive services translation API](https://learn.microsoft.com/en-us/azure/ai-services/translator/reference/v3-0-translate) | yes |
 | chatgpt | [translation using openAI's chatgpt-API](https://platform.openai.com/api-keys) | yes |
+
+#### What languages are supported ?
+For transcription languages supported - [see here](https://platform.openai.com/docs/guides/speech-to-text/supported-languages)
+For translation languages supported - goto the specific translation service API documentation (links to each service documentation is provided above)
 
 #### What's with the subtitle file formatting ?
 
