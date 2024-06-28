@@ -21,33 +21,13 @@ SUPPORTED_TRANSLATORS = [
     "microsoft",
     "chatgpt"
 ]
-SUPPORTED_LANGS = [i.lower() for i in ["af","am","ar","as","az","ba","be","bg","bn","bo","br","bs","ca","cs","cy","da","de","el","en","es","et","eu","fa","fi","fo","fr","gl","gu","ha","haw","he","hi","hr","ht","hu","hy","id","is","it","ja","jw","ka","kk","km","kn","ko","la","lb","ln","lo","lt","lv","mg","mi","mk","ml","mn","mr","ms","mt","my","ne","nl","nn","no","oc","pa","pl","ps","pt","ro","ru","sa","sd","si","sk","sl","sn","so","sq","sr","su","sv","sw","ta","te","tg","th","tk","tl","tr","tt","uk","ur","uz","vi","yi","yo","yue","zh","Afrikaans","Albanian","Amharic","Arabic","Armenian","Assamese","Azerbaijani","Bashkir","Basque","Belarusian","Bengali","Bosnian","Breton","Bulgarian","Burmese","Cantonese","Castilian","Catalan","Chinese","Croatian","Czech","Danish","Dutch","English","Estonian","Faroese","Finnish","Flemish","French","Galician","Georgian","German","Greek","Gujarati","Haitian","Haitian Creole","Hausa","Hawaiian","Hebrew","Hindi","Hungarian","Icelandic","Indonesian","Italian","Japanese","Javanese","Kannada","Kazakh","Khmer","Korean","Lao","Latin","Latvian","Letzeburgesch","Lingala","Lithuanian","Luxembourgish","Macedonian","Malagasy","Malay","Malayalam","Maltese","Mandarin","Maori","Marathi","Moldavian","Moldovan","Mongolian","Myanmar","Nepali","Norwegian","Nynorsk","Occitan","Panjabi","Pashto","Persian","Polish","Portuguese","Punjabi","Pushto","Romanian","Russian","Sanskrit","Serbian","Shona","Sindhi","Sinhala","Sinhalese","Slovak","Slovenian","Somali","Spanish","Sundanese","Swahili","Swedish","Tagalog","Tajik","Tamil","Tatar","Telugu","Thai","Tibetan","Turkish","Turkmen","Ukrainian","Urdu","Uzbek","Valencian","Vietnamese","Welsh","Yiddish","Yoruba"]]
+TRANSCRIPTION_SUPPORTED_LANGS = [i.lower() for i in ["af","am","ar","as","az","ba","be","bg","bn","bo","br","bs","ca","cs","cy","da","de","el","en","es","et","eu","fa","fi","fo","fr","gl","gu","ha","haw","he","hi","hr","ht","hu","hy","id","is","it","ja","jw","ka","kk","km","kn","ko","la","lb","ln","lo","lt","lv","mg","mi","mk","ml","mn","mr","ms","mt","my","ne","nl","nn","no","oc","pa","pl","ps","pt","ro","ru","sa","sd","si","sk","sl","sn","so","sq","sr","su","sv","sw","ta","te","tg","th","tk","tl","tr","tt","uk","ur","uz","vi","yi","yo","yue","zh","Afrikaans","Albanian","Amharic","Arabic","Armenian","Assamese","Azerbaijani","Bashkir","Basque","Belarusian","Bengali","Bosnian","Breton","Bulgarian","Burmese","Cantonese","Castilian","Catalan","Chinese","Croatian","Czech","Danish","Dutch","English","Estonian","Faroese","Finnish","Flemish","French","Galician","Georgian","German","Greek","Gujarati","Haitian","Haitian Creole","Hausa","Hawaiian","Hebrew","Hindi","Hungarian","Icelandic","Indonesian","Italian","Japanese","Javanese","Kannada","Kazakh","Khmer","Korean","Lao","Latin","Latvian","Letzeburgesch","Lingala","Lithuanian","Luxembourgish","Macedonian","Malagasy","Malay","Malayalam","Maltese","Mandarin","Maori","Marathi","Moldavian","Moldovan","Mongolian","Myanmar","Nepali","Norwegian","Nynorsk","Occitan","Panjabi","Pashto","Persian","Polish","Portuguese","Punjabi","Pushto","Romanian","Russian","Sanskrit","Serbian","Shona","Sindhi","Sinhala","Sinhalese","Slovak","Slovenian","Somali","Spanish","Sundanese","Swahili","Swedish","Tagalog","Tajik","Tamil","Tatar","Telugu","Thai","Tibetan","Turkish","Turkmen","Ukrainian","Urdu","Uzbek","Valencian","Vietnamese","Welsh","Yiddish","Yoruba"]]
+TRANSLATION_SUPPORTED_LANGS = {'afrikaans': 'af', 'albanian': 'sq', 'amharic': 'am', 'arabic': 'ar', 'armenian': 'hy', 'assamese': 'as', 'aymara': 'ay', 'azerbaijani': 'az', 'bambara': 'bm', 'basque': 'eu', 'belarusian': 'be', 'bengali': 'bn', 'bhojpuri': 'bho', 'bosnian': 'bs', 'bulgarian': 'bg', 'catalan': 'ca', 'cebuano': 'ceb', 'chichewa': 'ny', 'chinese (simplified)': 'zh-CN', 'chinese (traditional)': 'zh-TW', 'corsican': 'co', 'croatian': 'hr', 'czech': 'cs', 'danish': 'da', 'dhivehi': 'dv', 'dogri': 'doi', 'dutch': 'nl', 'english': 'en', 'esperanto': 'eo', 'estonian': 'et', 'ewe': 'ee', 'filipino': 'tl', 'finnish': 'fi', 'french': 'fr', 'frisian': 'fy', 'galician': 'gl', 'georgian': 'ka', 'german': 'de', 'greek': 'el', 'guarani': 'gn', 'gujarati': 'gu', 'haitian creole': 'ht', 'hausa': 'ha', 'hawaiian': 'haw', 'hebrew': 'iw', 'hindi': 'hi', 'hmong': 'hmn', 'hungarian': 'hu', 'icelandic': 'is', 'igbo': 'ig', 'ilocano': 'ilo', 'indonesian': 'id', 'irish': 'ga', 'italian': 'it', 'japanese': 'ja', 'javanese': 'jw', 'kannada': 'kn', 'kazakh': 'kk', 'khmer': 'km', 'kinyarwanda': 'rw', 'konkani': 'gom', 'korean': 'ko', 'krio': 'kri', 'kurdish (kurmanji)': 'ku', 'kurdish (sorani)': 'ckb', 'kyrgyz': 'ky', 'lao': 'lo', 'latin': 'la', 'latvian': 'lv', 'lingala': 'ln', 'lithuanian': 'lt', 'luganda': 'lg', 'luxembourgish': 'lb', 'macedonian': 'mk', 'maithili': 'mai', 'malagasy': 'mg', 'malay': 'ms', 'malayalam': 'ml', 'maltese': 'mt', 'maori': 'mi', 'marathi': 'mr', 'meiteilon (manipuri)': 'mni-Mtei', 'mizo': 'lus', 'mongolian': 'mn', 'myanmar': 'my', 'nepali': 'ne', 'norwegian': 'no', 'odia (oriya)': 'or', 'oromo': 'om', 'pashto': 'ps', 'persian': 'fa', 'polish': 'pl', 'portuguese': 'pt', 'punjabi': 'pa', 'quechua': 'qu', 'romanian': 'ro', 'russian': 'ru', 'samoan': 'sm', 'sanskrit': 'sa', 'scots gaelic': 'gd', 'sepedi': 'nso', 'serbian': 'sr', 'sesotho': 'st', 'shona': 'sn', 'sindhi': 'sd', 'sinhala': 'si', 'slovak': 'sk', 'slovenian': 'sl', 'somali': 'so', 'spanish': 'es', 'sundanese': 'su', 'swahili': 'sw', 'swedish': 'sv', 'tajik': 'tg', 'tamil': 'ta', 'tatar': 'tt', 'telugu': 'te', 'thai': 'th', 'tigrinya': 'ti', 'tsonga': 'ts', 'turkish': 'tr', 'turkmen': 'tk', 'twi': 'ak', 'ukrainian': 'uk', 'urdu': 'ur', 'uyghur': 'ug', 'uzbek': 'uz', 'vietnamese': 'vi', 'welsh': 'cy', 'xhosa': 'xh', 'yiddish': 'yi', 'yoruba': 'yo', 'zulu': 'zu'}
 
 def signal_handler(*args):
     cleanup()
     sys.exit(0)
 
-def gen_lang_map():
-    lang_map = {}
-    if os.path.exists(APP_DIR+"/lang.tsv"):
-        with open(APP_DIR+"/lang.tsv") as f:
-            lang_data = f.readlines()
-            for line in lang_data:
-                temp = line.replace("\n","").split("\t")
-                lang_name = temp[0].lower()
-                iso_639_2 = temp[1].replace("/","_").replace("-","_").lower()
-                iso_639_1 = temp[2].lower()
-                if iso_639_1 == "":
-                    lang_map[lang_name] = iso_639_2
-                    lang_map[iso_639_2] = iso_639_2
-                else:
-                    lang_map[lang_name] = iso_639_1
-                    lang_map[iso_639_1] = iso_639_1
-        return lang_map
-    else:
-        raise Exception("file: 'lang.tsv' is missing. Please place it in the same directory as this script.")
-
-LANG_MAP=gen_lang_map()
 signal.signal(signal.SIGTERM, signal_handler)
 signal.signal(signal.SIGINT, signal_handler)
 signal.signal(signal.SIGQUIT, signal_handler)
@@ -123,7 +103,7 @@ def transcribe_audio(model: whisper.model, audio_file: str, language: str):
         return new_result
     
     language = language.lower()
-    if language not in SUPPORTED_LANGS:
+    if language not in TRANSCRIPTION_SUPPORTED_LANGS:
         raise Exception("Cannot Transcribe! Unsupported Language. See Readme for list of supported languages.")
     audio= whisper.load_audio(audio_file)
     result = model.transcribe(audio,language=language,task="transcribe")
@@ -171,7 +151,7 @@ def translate_transcribed_result(transcribed_result, transcribed_language, targe
 def save_result_as_srt(result: dict, target_language: str, video_file_name: str, default_srt_file: bool=False):
 
     def get_lang_iso_code(lang):
-        return LANG_MAP[lang]
+        return TRANSLATION_SUPPORTED_LANGS[lang]
     
     target_language = target_language.lower()
     if default_srt_file:
@@ -256,10 +236,10 @@ def cli():
     ip_files_group.add_argument("--video_files", help="full path to the video file you want to generate subtitles for",type=str, action='append')
     ip_files_group.add_argument("--video_dir", help="full path to directory where your video files may be",type=str)
     transcribe_group = parser.add_argument_group("Transcription Configuration")
-    transcribe_group.add_argument("--video_language",help="Provide the language of the video(s). Set it to 'unknown' if you don't know and want AI to guess the language.(WARNING! This may be a bad-idea because the AI may make a mistake with language detection)",choices=SUPPORTED_LANGS, required=True)
+    transcribe_group.add_argument("--video_language",help="Provide the language of the video(s). Set it to 'unknown' if you don't know and want AI to guess the language.(WARNING! This may be a bad-idea because the AI may make a mistake with language detection)",choices=TRANSCRIPTION_SUPPORTED_LANGS, required=True)
     transcribe_group.add_argument("--force_language_autodetect",help="force language detection for all videos even if you provide 'video language' parameter", action="store_true")
     translation_group = parser.add_argument_group("Translation Configuration")
-    translation_group.add_argument("--translation_languages",help="select all the languages you want to also translate the subtitles to.",choices=SUPPORTED_LANGS, nargs="*")
+    translation_group.add_argument("--translation_languages",help="select all the languages you want to also translate the subtitles to.",choices=TRANSLATION_SUPPORTED_LANGS.keys(), nargs="*")
     translation_group.add_argument("--translation_service", help="pick a translation service.",choices=SUPPORTED_TRANSLATORS, default="google")
     translation_group.add_argument("--translation_service_api_key", help="not required for Google. But required for all other services.")
     args = parser.parse_args()
@@ -284,10 +264,10 @@ def gui():
     ip_files_group.add_argument("--video_files", help="full path to the video file you want to generate subtitles for",widget='MultiFileChooser', nargs="+")
     ip_files_group.add_argument("--video_dir", help="full path to directory where your video files may be",widget='DirChooser')
     transcribe_group = parser.add_argument_group("Transcription Configuration")
-    transcribe_group.add_argument("--video_language",help="Provide the language of the video(s). Set it to 'unknown' if you don't know and want AI to guess the language.(WARNING! This may be a bad-idea because the AI may make a mistake with language detection)",widget="FilterableDropdown",choices=SUPPORTED_LANGS, required=True)
+    transcribe_group.add_argument("--video_language",help="Provide the language of the video(s). Set it to 'unknown' if you don't know and want AI to guess the language.(WARNING! This may be a bad-idea because the AI may make a mistake with language detection)",widget="FilterableDropdown",choices=TRANSCRIPTION_SUPPORTED_LANGS, required=True)
     transcribe_group.add_argument("--force_language_autodetect",help="force language detection for all videos even if you provide 'video language' parameter", widget="BlockCheckbox", action="store_true")
     translation_group = parser.add_argument_group("Translation Configuration")
-    translation_group.add_argument("--translation_languages",help="select all the languages you want to also translate the subtitles to.",widget="Listbox",choices=SUPPORTED_LANGS, nargs="*", gooey_options={'height':200})
+    translation_group.add_argument("--translation_languages",help="select all the languages you want to also translate the subtitles to.",widget="Listbox",choices=TRANSLATION_SUPPORTED_LANGS.keys(), nargs="*", gooey_options={'height':200})
     translation_group.add_argument("--translation_service", help="pick a translation service.",choices=SUPPORTED_TRANSLATORS, widget="Dropdown", default="google")
     translation_group.add_argument("--translation_service_api_key", help="not required for Google. But required for all other services.")
     args = parser.parse_args()
