@@ -4,7 +4,6 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name="subtitler_util"
-version="1.0.3"
 authors = [
     {name="Anupam", email="anupam@anupamkumar.me"}
 ]
@@ -34,9 +33,10 @@ classifiers = [
 dependencies = [
     "ffmpeg-python",
     "openai-whisper",
-    "Gooey",
+    "Gooey@git+https://github.com/anupamkumar/Gooey.git@main",
     "deep-translator"
 ]
+dynamic = ["version"]
 
 [project.scripts]
 subtitler = "subtitler_util.subtitler:main"
@@ -46,3 +46,5 @@ Homepage = "https://anupamkumar.me"
 GitHub = "https://github.com/anupamkumar/subtitler"
 Issues = "https://github.com/anupamkumar/subtitler/issues"
 
+[tool.setuptools.dynamic]
+version = { attr = "subtitler_util.__version__"}

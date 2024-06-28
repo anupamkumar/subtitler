@@ -6,12 +6,29 @@ import deep_translator
 import argparse
 import sys
 import tempfile
-
+import signal
 from gooey import Gooey, GooeyParser
 from datetime import datetime, timedelta
 
+
 APP_DIR = os.path.dirname(__file__)
 TEMP_DIR = tempfile.gettempdir()+"/subtitler"
+SUPPORTED_TRANSLATORS = [
+    "google",
+    "deepl",
+    "yandex",
+    "libre-translate",
+    "microsoft",
+    "chatgpt"
+]
+SUPPORTED_LANGS = [i.lower() for i in ["af","am","ar","as","az","ba","be","bg","bn","bo","br","bs","ca","cs","cy","da","de","el","en","es","et","eu","fa","fi","fo","fr","gl","gu","ha","haw","he","hi","hr","ht","hu","hy","id","is","it","ja","jw","ka","kk","km","kn","ko","la","lb","ln","lo","lt","lv","mg","mi","mk","ml","mn","mr","ms","mt","my","ne","nl","nn","no","oc","pa","pl","ps","pt","ro","ru","sa","sd","si","sk","sl","sn","so","sq","sr","su","sv","sw","ta","te","tg","th","tk","tl","tr","tt","uk","ur","uz","vi","yi","yo","yue","zh","Afrikaans","Albanian","Amharic","Arabic","Armenian","Assamese","Azerbaijani","Bashkir","Basque","Belarusian","Bengali","Bosnian","Breton","Bulgarian","Burmese","Cantonese","Castilian","Catalan","Chinese","Croatian","Czech","Danish","Dutch","English","Estonian","Faroese","Finnish","Flemish","French","Galician","Georgian","German","Greek","Gujarati","Haitian","Haitian Creole","Hausa","Hawaiian","Hebrew","Hindi","Hungarian","Icelandic","Indonesian","Italian","Japanese","Javanese","Kannada","Kazakh","Khmer","Korean","Lao","Latin","Latvian","Letzeburgesch","Lingala","Lithuanian","Luxembourgish","Macedonian","Malagasy","Malay","Malayalam","Maltese","Mandarin","Maori","Marathi","Moldavian","Moldovan","Mongolian","Myanmar","Nepali","Norwegian","Nynorsk","Occitan","Panjabi","Pashto","Persian","Polish","Portuguese","Punjabi","Pushto","Romanian","Russian","Sanskrit","Serbian","Shona","Sindhi","Sinhala","Sinhalese","Slovak","Slovenian","Somali","Spanish","Sundanese","Swahili","Swedish","Tagalog","Tajik","Tamil","Tatar","Telugu","Thai","Tibetan","Turkish","Turkmen","Ukrainian","Urdu","Uzbek","Valencian","Vietnamese","Welsh","Yiddish","Yoruba"]]
+
+def signal_handler(*args):
+    print(args)
+    print(*args)
+    print("got signal")
+    cleanup()
+    sys.exit(0)
 
 def gen_lang_map():
     lang_map = {}
@@ -34,16 +51,9 @@ def gen_lang_map():
         raise Exception("file: 'lang.tsv' is missing. Please place it in the same directory as this script.")
 
 LANG_MAP=gen_lang_map()
-SUPPORTED_TRANSLATORS = [
-    "google",
-    "deepl",
-    "yandex",
-    "libre-translate",
-    "microsoft",
-    "chatgpt"
-]
-SUPPORTED_LANGS = [i.lower() for i in ["af","am","ar","as","az","ba","be","bg","bn","bo","br","bs","ca","cs","cy","da","de","el","en","es","et","eu","fa","fi","fo","fr","gl","gu","ha","haw","he","hi","hr","ht","hu","hy","id","is","it","ja","jw","ka","kk","km","kn","ko","la","lb","ln","lo","lt","lv","mg","mi","mk","ml","mn","mr","ms","mt","my","ne","nl","nn","no","oc","pa","pl","ps","pt","ro","ru","sa","sd","si","sk","sl","sn","so","sq","sr","su","sv","sw","ta","te","tg","th","tk","tl","tr","tt","uk","ur","uz","vi","yi","yo","yue","zh","Afrikaans","Albanian","Amharic","Arabic","Armenian","Assamese","Azerbaijani","Bashkir","Basque","Belarusian","Bengali","Bosnian","Breton","Bulgarian","Burmese","Cantonese","Castilian","Catalan","Chinese","Croatian","Czech","Danish","Dutch","English","Estonian","Faroese","Finnish","Flemish","French","Galician","Georgian","German","Greek","Gujarati","Haitian","Haitian Creole","Hausa","Hawaiian","Hebrew","Hindi","Hungarian","Icelandic","Indonesian","Italian","Japanese","Javanese","Kannada","Kazakh","Khmer","Korean","Lao","Latin","Latvian","Letzeburgesch","Lingala","Lithuanian","Luxembourgish","Macedonian","Malagasy","Malay","Malayalam","Maltese","Mandarin","Maori","Marathi","Moldavian","Moldovan","Mongolian","Myanmar","Nepali","Norwegian","Nynorsk","Occitan","Panjabi","Pashto","Persian","Polish","Portuguese","Punjabi","Pushto","Romanian","Russian","Sanskrit","Serbian","Shona","Sindhi","Sinhala","Sinhalese","Slovak","Slovenian","Somali","Spanish","Sundanese","Swahili","Swedish","Tagalog","Tajik","Tamil","Tatar","Telugu","Thai","Tibetan","Turkish","Turkmen","Ukrainian","Urdu","Uzbek","Valencian","Vietnamese","Welsh","Yiddish","Yoruba"]]
-
+signal.signal(signal.SIGTERM, signal_handler)
+signal.signal(signal.SIGINT, signal_handler)
+signal.signal(signal.SIGQUIT, signal_handler)
 
 def gen_wav_file(vid_file: str, file_map: dict):
     output_audio_file = TEMP_DIR+"/"+( ".".join(vid_file.split("/")[-1].split(".")[:-1]) )+".wav"
@@ -199,10 +209,10 @@ def subtitle(vid_file_map: dict, audio_files: list, video_language: str, transla
     
     def print_and_update_progress(update_progress=False):
         nonlocal current_step
-        if mode is None:
+        if mode == 'gui':
             print(f"progress: {current_step}/{total_steps}")
-        if update_progress:
-            current_step += 1
+            if update_progress:
+                current_step += 1
 
     total_steps = 2
     current_step = 1
@@ -256,10 +266,8 @@ def cli():
     translation_group.add_argument("--translation_service", help="pick a translation service.",choices=SUPPORTED_TRANSLATORS, default="google")
     translation_group.add_argument("--translation_service_api_key", help="not required for Google. But required for all other services.")
     args = parser.parse_args()
-
     if args.translation_languages is None:
         args.translation_languages = []
-    
     print(f"Run Configuration: {args}\n")
     process_args(args)
 
@@ -267,11 +275,13 @@ def cli():
        progress_regex=r"^progress: (?P<current>\d+)/(?P<total>\d+)$",
        hide_progress_msg=True,
        progress_expr="current / total * 100",
-       show_time_remaining=True,
-       hide_time_remaining_on_complete=False
+    #    timing_options={'show_time_remaining': True, 'hide_time_remaining_on_complete': False},
+       show_restart_button=False,
+       optional_cols=1,
+       program_name="Subtitler 1.0"
        )
 def gui():
-    parser = GooeyParser(description="Transcribe and Translate subtitles for videos in any language.",prog="Subtitler")
+    parser = GooeyParser(description="Transcribe and Translate subtitles for videos in any language.")
     file_input_group = parser.add_argument_group("Input Configuration")
     ip_files_group = file_input_group.add_mutually_exclusive_group(required=True)
     ip_files_group.add_argument("--video_files", help="full path to the video file you want to generate subtitles for",widget='MultiFileChooser', nargs="+")
@@ -286,16 +296,17 @@ def gui():
     args = parser.parse_args()
     if args.translation_languages is None:
         args.translation_languages = []
-    args.mode = None
+    args.mode = 'gui'
     print(f"Run Configuration: {args}\n")
     process_args(args)
-
+    sys.exit(0)
+    
 def main():
     if 'cli' in sys.argv:
         cli()
     else:
         gui()
 
-        
+
 if __name__ == "__main__":
     main()

@@ -1,3 +1,1 @@
-import os
-
-APP_DIR = os.path.dirname(__file__)
+__version__ = "1.0.4"
