@@ -25,15 +25,15 @@ Simply put, when I looked at whisper's [show-and-tell](https://github.com/ggerga
 The easiest way is
 
 ```
-pip install subtitler_util
+pip install git+https://github.com/anupamkumar/subtitler.git
 ```
 
-You could also download the zip from github and install the following dependencies
+You could also clone or download the zip from github and install the following dependencies
 
 ```
     "ffmpeg-python",
     "openai-whisper",
-    "Gooey",
+    "Gooey@git+https://github.com/anupamkumar/Gooey.git@main",
     "deep-translator"
 ```
 
