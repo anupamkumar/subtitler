@@ -263,7 +263,7 @@ def cli():
        progress_regex=r"^progress: (?P<current>\d+)/(?P<total>\d+)$",
        hide_progress_msg=True,
        progress_expr="current / total * 100",
-    #    timing_options={'show_time_remaining': True, 'hide_time_remaining_on_complete': False},
+       timing_options={'show_time_remaining': True, 'hide_time_remaining_on_complete': False},
        show_restart_button=False,
        optional_cols=1,
        program_name="Subtitler 1.0"
