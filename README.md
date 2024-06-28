@@ -43,20 +43,17 @@ You could also clone or download the zip from github and install the following d
 
 If you used `pip` to install, then you should have `subtitler` command available in the terminal of your choice.
 
-Simply, type
+* To start the GUI, type the following in your terminal
 
 ```
 subtitler
 ```
 
-to start the GUI
-or type
+* To run CLI version, type the following in your terminal
 
 ```
 subtitler cli --help
 ```
-
-to run CLI version of the utility.
 
 ##### Method 2
 
