@@ -12,10 +12,10 @@ from datetime import datetime, timedelta
 
 if os.name =='nt':
     DIR_DELIM = "\\"
-    import _winapi
     scripts_dir = os.path.dirname(os.path.realpath(sys.argv[0]))
-    _winapi.CreateJunction(scripts_dir+DIR_DELIM+"subtitler.exe",scripts_dir+DIR_DELIM+"subtitler")
-
+    if not os.path.exists(scripts_dir+DIR_DELIM+"subtitler"):
+        import _winapi
+        _winapi.CreateJunction(scripts_dir+DIR_DELIM+"subtitler.exe",scripts_dir+DIR_DELIM+"subtitler")
 else:
     DIR_DELIM = "/"
 
