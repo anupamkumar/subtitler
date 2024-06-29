@@ -284,11 +284,11 @@ Both the GUI and CLI should be able to run on any mainstream OS (Windows/Mac/GNU
 
 > [!WARNING] 
 > **A note on Windows 11 execution:**
-> If you run into an error about numpy, like the one shown in the screenshot below, be aware that it's not an issue with this package. It's an issue with whisper on windows.
+> If you run into an error about numpy, like the one shown in the screenshot below, be aware that it's not an issue with this package. It's an issue with `pybind11` and `whisper` on Windows-11.
 > ![win11error](doc/img/win11error.png)
 
 
-**The workaround to this problem is to remove numpy-2.0.0 or higher.**
+If you run into this problem, **The workaround to this problem is to remove numpy-2.0.0 or higher.**
 ```
 pip uninstall numpy
 ```
