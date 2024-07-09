@@ -67,7 +67,7 @@ pip install git+https://github.com/anupamkumar/subtitler.git
 ```
 ###### Method2
 
-You could also clone or download the zip from github and install the following python packages.
+You could also clone or [download the zip](https://github.com/anupamkumar/subtitler/archive/refs/heads/master.zip) the package from github and install the following python packages.
 
 ```
     "ffmpeg-python",
