@@ -247,6 +247,7 @@ def process_args(args):
 def cli():
     parser = argparse.ArgumentParser(description="Transcribe and Translate subtitles for videos in any language.",prog="Subtitler")
     parser.add_argument("mode",help="enter mode as cli to run cli. not entering a mode will attempt to run the gui")
+    parser.add_argument("-v","--version", help="show version and exit", action='version', version=VERSION)
     ip_files_group = parser.add_mutually_exclusive_group(required=True)
     ip_files_group.add_argument("--video_files", help="full path to the video file you want to generate subtitles for",type=str, action='append')
     ip_files_group.add_argument("--video_dir", help="full path to directory where your video files may be",type=str)
