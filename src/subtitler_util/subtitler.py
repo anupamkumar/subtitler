@@ -235,6 +235,8 @@ def subtitle(vid_file_map: dict, audio_files: list, video_language: str, transla
         
 
 def process_args(args):
+    if args.translation_languages is None:
+        args.translation_languages = []
     vid_file_map= {}
     audio_files = []
     if args.video_files is None:
@@ -247,7 +249,7 @@ def process_args(args):
     cleanup()
 
 def cli():
-    parser = argparse.ArgumentParser(description="Transcribe and Translate subtitles for videos in any language.",prog="Subtitler")
+    parser = argparse.ArgumentParser(description="Transcribe and Translate subtitles for videos in any language.",prog="Subtitler", epilog="Subtitler Copyright (C) 2024 Anupam Kumar <https://anupamkumar.me>. \nThis program comes with ABSOLUTELY NO WARRANTY.\nThis is free software, and you are welcome to redistribute it under certain conditions; \nGoto https://raw.githubusercontent.com/anupamkumar/subtitler/master/LICENSE for details.")
     parser.add_argument("mode",help="enter mode as cli to run cli. not entering a mode will attempt to run the gui")
     parser.add_argument("-v","--version", help="show version and exit", action='version', version=VERSION)
     ip_files_group = parser.add_mutually_exclusive_group(required=True)
@@ -261,8 +263,6 @@ def cli():
     translation_group.add_argument("--translation_service", help="pick a translation service.",choices=SUPPORTED_TRANSLATORS, default="google")
     translation_group.add_argument("--translation_service_api_key", help="not required for Google. But required for all other services.")
     args = parser.parse_args()
-    if args.translation_languages is None:
-        args.translation_languages = []
     print(f"Run Configuration: {args}\n")
     process_args(args)
 
@@ -273,7 +273,28 @@ def cli():
        timing_options={'show_time_remaining': True, 'hide_time_remaining_on_complete': False},
        show_restart_button=False,
        optional_cols=1,
-       program_name="Subtitler "+VERSION)
+       program_name="Subtitler "+VERSION,
+       menu=[{
+           'name': 'Help',
+           'items': [{
+               'type':'AboutDialog',
+               'menuTitle':'About',
+               'name': 'Subtitler',
+               'description': "Use the power of Whisper to transcribe any video clip \nand generate it's subtitles (srt) file. \nAlso, use cutting-edge AI-power translation-services \nto translate the generated subtitles to any language you want.",
+               'version': VERSION,
+               'website': 'https://github.com/anupamkumar/subtitler',
+               'developer': 'Anupam Kumar <https://anupamkumar.me>',
+               'license': 'GPLv3'
+           }, {
+               'menuTitle': 'Documentation & Guide',
+               'type': 'Link',
+               'url': 'https://github.com/anupamkumar/subtitler/blob/master/README.md'
+           }, {
+               'menuTitle': 'License',
+               'type': 'Link',
+               'url': 'https://github.com/anupamkumar/subtitler/blob/master/LICENSE'
+           }]
+       }])
 def gui():
     parser = GooeyParser(description="Transcribe and Translate subtitles for videos in any language.")
     file_input_group = parser.add_argument_group("Input Configuration")
@@ -288,8 +309,6 @@ def gui():
     translation_group.add_argument("--translation_service", help="pick a translation service.",choices=SUPPORTED_TRANSLATORS, widget="Dropdown", default="google")
     translation_group.add_argument("--translation_service_api_key", help="not required for Google. But required for all other services.")
     args = parser.parse_args()
-    if args.translation_languages is None:
-        args.translation_languages = []
     args.mode = 'gui'
     print(f"Run Configuration: {args}\n")
     process_args(args)
