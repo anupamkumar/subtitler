@@ -185,7 +185,7 @@ def check_if_file_is_video(file):
         probe_result = ffmpeg.probe(file)
         if "streams" in probe_result:
             for stream in probe_result["streams"]:
-                if stream["codec_type"] == "video" or stream["codec_type"] == "audio":
+                if stream["codec_type"] == "video":
                     return True
         print(f"No streams were found in File: {file}. Skipping it.")
         return False
