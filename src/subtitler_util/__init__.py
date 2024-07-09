@@ -23,6 +23,6 @@ except:
     pass
 
 if __build_date__ is not None:
-    VERSION = f"{__major_version__}.build{__build_date__}"
+    VERSION = f"{__major_version__}.{__build_date__}"
 else:
     VERSION = __major_version__
