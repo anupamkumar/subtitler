@@ -1,3 +1,25 @@
+# Table of Contents
+
+* [Subtitler](#subtitler)
+	* [What ?](#what-)
+	* [Why ?](#why-)
+	* [How ?](#how-)
+		* [How do I install this utility ?](#how-do-i-install-this-utility-)
+		* [How do I run this utility ?](#how-do-i-run-this-utility-)
+				* [Method 1](#method-1)
+				* [Method 2](#method-2)
+* [Usage Guide](#usage-guide)
+		* [Using the GUI](#using-the-gui)
+		* [Using the CLI](#using-the-cli)
+* [FAQ](#faq)
+			* [Is is fast ?](#is-is-fast-)
+			* [What translation-services are available ?](#what-translation-services-are-available-)
+			* [What languages are supported ?](#what-languages-are-supported-)
+			* [What's with the subtitle file formatting ?](#whats-with-the-subtitle-file-formatting-)
+			* [Your examples all have warnings ... what's up with that ?](#your-examples-all-have-warnings--whats-up-with-that-)
+			* [Will it run on my OS ?](#will-it-run-on-my-os-)
+* [Standing on the shoulder of Giants : Credit where credit is due](#standing-on-the-shoulder-of-giants--credit-where-credit-is-due)
+
 # Subtitler
 
 Use the power of Whisper to transcribe any video clip and generate it's subtitles (srt) file. Also, use cutting-edge AI-power translation-services to translate the generated subtitles to any language you want.
@@ -22,13 +44,32 @@ Simply put, when I looked at whisper's [show-and-tell](https://github.com/ggerga
 
 ### How do I install this utility ?
 
-The easiest way is
+##### Prerequisites
+
+You'll need the following applications already installed to run the utility correctly.
+1. [FFMPEG](https://www.ffmpeg.org/download.html) 
+    * [FFMPEG Installation Guide for Windows/Mac/Linux](https://www.hostinger.com/tutorials/how-to-install-ffmpeg)
+2. [Python 3.10 or higher](https://www.python.org/downloads/)
+3. *OPTIONAL*: PyTorch with GPU Support 
+    * [CUDA + PyTorch - Windows installation Guide](https://www.gpu-mart.com/blog/Installing-pytorch-with-cuda-support-on-Windows)
+    * [CUDA + PyTorch - Linux/Ubuntu installation Guide](https://medium.com/@jeanpierre_lv/installing-pytorch-with-gpu-support-on-ubuntu-a-step-by-step-guide-38dcf3f8f266)
+    * [ROCm + PyTorch - Linux Guide](https://rocm.docs.amd.com/projects/install-on-linux/en/develop/how-to/3rd-party/pytorch-install.html)
+    * ROCm + PyTorch for Windows is not offically supported. Use [DirectML](https://learn.microsoft.com/en-us/windows/ai/directml/pytorch-windows) instead
+    > [!NOTE]
+    > The utility will work just fine without 'PyTorch with CPU Support' and will use CPU for *doing AI magic*. However, enabling PyTorch with GPU support will significantly improve performance and speedup the transcription. So, if you have a GPU that has [CUDA](https://en.wikipedia.org/wiki/CUDA) or [ROCm](https://en.wikipedia.org/wiki/ROCm) support then this optional installation step is well worth it.
+
+##### Installation
+
+###### Method1
+
+The easiest way is to type the following into your terminal of choice. 
 
 ```
 pip install git+https://github.com/anupamkumar/subtitler.git
 ```
+###### Method2
 
-You could also clone or download the zip from github and install the following dependencies
+You could also clone or download the zip from github and install the following python packages.
 
 ```
     "ffmpeg-python",
@@ -297,7 +338,7 @@ and install the latest numpy-1.x
 pip install numpy==1.26.4
 ```
 
-## Standing on the shoulder of Giants : Credit where credit is due
+### Standing on the shoulder of Giants : Credit where credit is due
 
 Writing this tiny... tiny... tiny utility would not be possible if not for these projects. 💗
 
