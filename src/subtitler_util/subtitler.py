@@ -13,6 +13,13 @@ try:
 except ModuleNotFoundError:
     from __init__ import VERSION, TEMP_DIR, DIR_DELIM
 
+## fix gui issue 
+if os.name =='nt':
+    scripts_dir = os.path.dirname(os.path.realpath(sys.argv[0]))
+    if not os.path.exists(scripts_dir+DIR_DELIM+"subtitler"):
+        import shutil
+        shutil.copy(scripts_dir+DIR_DELIM+"subtitler.exe",scripts_dir+DIR_DELIM+"subtitler")
+
 SUPPORTED_TRANSLATORS = [
     "google",
     "deepl",
