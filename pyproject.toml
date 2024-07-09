@@ -50,4 +50,4 @@ GitHub = "https://github.com/anupamkumar/subtitler"
 Issues = "https://github.com/anupamkumar/subtitler/issues"
 
 [tool.setuptools.dynamic]
-version = { attr = "subtitler_util.__version__"}
+version = { attr = "subtitler_util.VERSION"}

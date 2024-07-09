@@ -9,6 +9,7 @@ import tempfile
 import signal
 from gooey import Gooey, GooeyParser
 from datetime import datetime, timedelta
+from __init__ import VERSION
 
 if os.name =='nt':
     DIR_DELIM = "\\"
@@ -269,7 +270,7 @@ def cli():
        timing_options={'show_time_remaining': True, 'hide_time_remaining_on_complete': False},
        show_restart_button=False,
        optional_cols=1,
-       program_name="Subtitler 1.0")
+       program_name="Subtitler "+VERSION)
 def gui():
     parser = GooeyParser(description="Transcribe and Translate subtitles for videos in any language.")
     file_input_group = parser.add_argument_group("Input Configuration")
