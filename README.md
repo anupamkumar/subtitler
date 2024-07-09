@@ -53,8 +53,8 @@ You'll need the following applications already installed to run the utility corr
     * [CUDA + PyTorch - Linux/Ubuntu installation Guide](https://medium.com/@jeanpierre_lv/installing-pytorch-with-gpu-support-on-ubuntu-a-step-by-step-guide-38dcf3f8f266)
     * [ROCm + PyTorch - Linux Guide](https://rocm.docs.amd.com/projects/install-on-linux/en/develop/how-to/3rd-party/pytorch-install.html)
     * ROCm + PyTorch for Windows is not offically supported. Use [DirectML](https://learn.microsoft.com/en-us/windows/ai/directml/pytorch-windows) instead
-    > [!NOTE]
-    > The utility will work just fine without 'PyTorch with CPU Support' and will use CPU for *doing AI magic*. However, enabling PyTorch with GPU support will significantly improve performance and speedup the transcription. So, if you have a GPU that has [CUDA](https://en.wikipedia.org/wiki/CUDA) or [ROCm](https://en.wikipedia.org/wiki/ROCm) support then this optional installation step is well worth it.
+  > [!NOTE]
+  > The utility will work just fine without 'PyTorch with CPU Support' and will use CPU for *doing AI magic*. However, enabling PyTorch with GPU support will significantly improve performance and speedup the transcription. So, if you have a GPU that has [CUDA](https://en.wikipedia.org/wiki/CUDA) or [ROCm](https://en.wikipedia.org/wiki/ROCm) support then this optional installation step is well worth it.
 
 ##### Installation
 
