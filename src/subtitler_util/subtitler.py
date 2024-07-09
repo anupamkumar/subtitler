@@ -5,23 +5,14 @@ import whisper
 import deep_translator
 import argparse
 import sys
-import tempfile
 import signal
 from gooey import Gooey, GooeyParser
 from datetime import datetime, timedelta
-from subtitler_util import VERSION
+try:
+    from subtitler_util import VERSION, TEMP_DIR, DIR_DELIM
+except ModuleNotFoundError:
+    from __init__ import VERSION, TEMP_DIR, DIR_DELIM
 
-if os.name =='nt':
-    DIR_DELIM = "\\"
-    scripts_dir = os.path.dirname(os.path.realpath(sys.argv[0]))
-    if not os.path.exists(scripts_dir+DIR_DELIM+"subtitler"):
-        import shutil
-        shutil.copy(scripts_dir+DIR_DELIM+"subtitler.exe",scripts_dir+DIR_DELIM+"subtitler")
-else:
-    DIR_DELIM = "/"
-
-APP_DIR = os.path.dirname(__file__)
-TEMP_DIR = tempfile.gettempdir()+DIR_DELIM+"subtitler"
 SUPPORTED_TRANSLATORS = [
     "google",
     "deepl",
