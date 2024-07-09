@@ -1,5 +1,6 @@
 import os
 import tempfile
+import sys
 
 __major_version__ = "1.0"
 __build_date__ = None
