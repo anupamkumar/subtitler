@@ -185,11 +185,13 @@ def check_if_file_is_video(file):
         probe_result = ffmpeg.probe(file)
         if "streams" in probe_result:
             for stream in probe_result["streams"]:
-                if stream["codec_type"] == "video":
+                if stream["codec_type"] == "video" or stream["codec_type"] == "audio":
                     return True
+        print(f"No streams were found in File: {file}. Skipping it.")
         return False
-    except:
-        return False
+    except Exception as e:
+        print(f"Error probing file: {file}")
+        print(e)
 
 def find_vid_files_in_dir(target_dir):
     files_list = []
