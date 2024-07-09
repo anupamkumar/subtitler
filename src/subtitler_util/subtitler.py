@@ -9,7 +9,7 @@ import tempfile
 import signal
 from gooey import Gooey, GooeyParser
 from datetime import datetime, timedelta
-from __init__ import VERSION
+from subtitler_util import VERSION
 
 if os.name =='nt':
     DIR_DELIM = "\\"
