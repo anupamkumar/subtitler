@@ -187,7 +187,7 @@ def check_if_file_is_video(file):
             for stream in probe_result["streams"]:
                 if stream["codec_type"] == "video":
                     return True
-        print(f"No streams were found in File: {file}. Skipping it.")
+        print(f"No video stream(s) were found in File: {file}. Skipping it.")
         return False
     except Exception as e:
         print(f"Error probing file: {file}")
