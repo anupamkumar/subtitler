@@ -8,11 +8,12 @@ import sys
 import signal
 from gooey import Gooey, GooeyParser
 from datetime import datetime, timedelta
-from constants import SUPPORTED_TRANSLATORS, TRANSCRIPTION_SUPPORTED_LANGS, TRANSLATION_SUPPORTED_LANGS
 try:
     from subtitler_util import VERSION, TEMP_DIR, DIR_DELIM
+    from subtitler_util.constants import SUPPORTED_TRANSLATORS, TRANSCRIPTION_SUPPORTED_LANGS, TRANSLATION_SUPPORTED_LANGS
 except ModuleNotFoundError:
     from __init__ import VERSION, TEMP_DIR, DIR_DELIM
+    from constants import SUPPORTED_TRANSLATORS, TRANSCRIPTION_SUPPORTED_LANGS, TRANSLATION_SUPPORTED_LANGS
 
 ## temp fix/workaround for gui issue in windows
 if os.name =='nt':
