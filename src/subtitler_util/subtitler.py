@@ -10,10 +10,10 @@ from gooey import Gooey, GooeyParser
 from datetime import datetime, timedelta
 try:
     from subtitler_util import VERSION, TEMP_DIR, DIR_DELIM
-    from subtitler_util.constants import SUPPORTED_TRANSLATORS, TRANSCRIPTION_SUPPORTED_LANGS, TRANSLATION_SUPPORTED_LANGS
+    from subtitler_util.constants import SUPPORTED_TRANSLATORS, TRANSCRIPTION_SUPPORTED_LANGS, TRANSLATION_SUPPORTED_LANGS, GUI_MENU
 except ModuleNotFoundError:
     from __init__ import VERSION, TEMP_DIR, DIR_DELIM
-    from constants import SUPPORTED_TRANSLATORS, TRANSCRIPTION_SUPPORTED_LANGS, TRANSLATION_SUPPORTED_LANGS
+    from constants import SUPPORTED_TRANSLATORS, TRANSCRIPTION_SUPPORTED_LANGS, TRANSLATION_SUPPORTED_LANGS, GUI_MENU
 
 ## temp fix/workaround for gui issue in windows
 if os.name =='nt':
@@ -259,31 +259,11 @@ def cli():
        progress_regex=r"^progress: (?P<current>\d+)/(?P<total>\d+)$",
        hide_progress_msg=True,
        progress_expr="current / total * 100",
-       timing_options={'show_time_remaining': True, 'hide_time_remaining_on_complete': False},
+       timing_options={'show_time_remaining': False, 'hide_time_remaining_on_complete': False},
        show_restart_button=False,
        optional_cols=1,
        program_name="Subtitler "+VERSION,
-       menu=[{
-           'name': 'Help',
-           'items': [{
-               'type':'AboutDialog',
-               'menuTitle':'About',
-               'name': 'Subtitler',
-               'description': "Use the power of Whisper to transcribe any video clip \nand generate it's subtitles (srt) file. \nAlso, use cutting-edge AI-power translation-services \nto translate the generated subtitles to any language you want.",
-               'version': VERSION,
-               'website': 'https://github.com/anupamkumar/subtitler',
-               'developer': 'Anupam Kumar <https://anupamkumar.me>',
-               'license': 'GPLv3'
-           }, {
-               'menuTitle': 'Documentation & Guide',
-               'type': 'Link',
-               'url': 'https://github.com/anupamkumar/subtitler/blob/master/README.md'
-           }, {
-               'menuTitle': 'License',
-               'type': 'Link',
-               'url': 'https://github.com/anupamkumar/subtitler/blob/master/LICENSE'
-           }]
-       }])
+       menu=GUI_MENU)
 def gui():
     parser = GooeyParser(description="Transcribe and Translate subtitles for videos in any language.")
     file_input_group = parser.add_argument_group("Input Configuration")
