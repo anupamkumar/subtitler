@@ -76,6 +76,17 @@ You could also clone or [download the zip](https://github.com/anupamkumar/subtit
     "deep-translator"
 ```
 
+###### Method3 - pipx
+
+```sh
+# the first step is going to take a while
+pipx install git+https://github.com/anupamkumar/subtitler.git 
+pipx inject subtitler-util six
+
+# then you can run it with
+subtitler
+```
+
 ### How do I run this utility ?
 
 ##### Method 1
